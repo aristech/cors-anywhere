@@ -19,9 +19,5 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: yarn install
-#      - run: echo "${{ secrets.ENV_FILE }}" > .env
-#      - run: yarn build
-#      - run: pm2 stop gizmo
-#      - run: pm2 start gizmo
-#      - run: pm2 save
-#      - run: sudo service nginx restart
+      - run: pm2 stop proxy
+      - run: pm2 start proxy

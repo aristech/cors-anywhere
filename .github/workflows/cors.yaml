@@ -1,0 +1,27 @@
+name: cors
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [ master ]
+
+
+jobs:
+  build:
+    runs-on: [ production ]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: false
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: yarn install
+#      - run: echo "${{ secrets.ENV_FILE }}" > .env
+#      - run: yarn build
+#      - run: pm2 stop gizmo
+#      - run: pm2 start gizmo
+#      - run: pm2 save
+#      - run: sudo service nginx restart
